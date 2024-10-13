@@ -102,8 +102,8 @@ int main()
 
     pos1.joueur_y = rand() % 8 + 1;  
     pos1.joueur_x = rand() % 8 + 1; 
-    pos2.Boite_y = rand() % 8 + 2;  
-    pos2.Boite_x = rand() % 8 + 2;
+    pos2.Boite_y = rand() % 8 + 1;  
+    pos2.Boite_x = rand() % 8 + 1;
     pos3.obj_y = rand() % 8 + 1;  
     pos3.obj_x = rand() % 8 + 1;
 
@@ -159,23 +159,25 @@ int main()
         int next_y = pos1.joueur_y;
 
         if (move == 'w') {
-            next_x--;  // Move up
+            next_x--;
         } else if (move == 's') {
-            next_x++;  // Move down
+            next_x++;
         } else if (move == 'a') {
-            next_y--;  // Move left
+            next_y--;
         } else if (move == 'd') {
-            next_y++;  // Move right
+            next_y++;
         } else {
             printf("La touche n est pas un des mouvements\n");
-            continue;  // Skip to the next iteration if invalid input
+            continue;
         }
 
-        // Check if the next position is valid for the player
-        if (tab[next_x][next_y] != '#') {
-            // Check if the next position is the Boite
-            if (next_x == pos2.Boite_x && next_y == pos2.Boite_y) {
-                // Calculate the Boite's next position
+        
+        if (tab[next_x][next_y] != '#') 
+        {
+            
+            if (next_x == pos2.Boite_x && next_y == pos2.Boite_y) 
+            {
+              
                 int Boite_next_x = pos2.Boite_x;
                 int Boite_next_y = pos2.Boite_y;
 
@@ -189,24 +191,26 @@ int main()
                     Boite_next_y++;
                 }
 
-                // Check if the Boite can be pushed
+                
                 if (tab[Boite_next_x][Boite_next_y] != '#' && 
-                    (Boite_next_x != pos3.obj_x || Boite_next_y != pos3.obj_y)) { // Avoid pushing into the objective
-                    // Move the Boite
-                    tab[pos2.Boite_x][pos2.Boite_y] = ' ';  // Clear Boite's current position
+                    (Boite_next_x != pos3.obj_x || Boite_next_y != pos3.obj_y)) 
+                    {
+                    
+                    tab[pos2.Boite_x][pos2.Boite_y] = ' ';
                     pos2.Boite_x = Boite_next_x;
                     pos2.Boite_y = Boite_next_y;
-                    tab[pos2.Boite_x][pos2.Boite_y] = Boite;  // Place Boite in new position
-                } else {
+                    tab[pos2.Boite_x][pos2.Boite_y] = Boite;
+                } else 
+                {
                     printf("Vous ne pouvez pas pousser la Boite dans cette direction.\n");
                 }
             }
 
-            // Move the player
-            tab[pos1.joueur_x][pos1.joueur_y] = ' ';  // Clear player's current position
+            
+            tab[pos1.joueur_x][pos1.joueur_y] = ' ';
             pos1.joueur_x = next_x;
             pos1.joueur_y = next_y;
-            tab[pos1.joueur_x][pos1.joueur_y] = player;  // Place player in new position
+            tab[pos1.joueur_x][pos1.joueur_y] = player;
         } else {
             printf("Vous ne pouvez pas vous déplacer dans cette direction.\n");
         }

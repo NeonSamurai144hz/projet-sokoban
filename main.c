@@ -102,8 +102,8 @@ int main()
 
     pos1.joueur_y = rand() % 8 + 1;  
     pos1.joueur_x = rand() % 8 + 1; 
-    pos2.Boite_y = rand() % 8 + 1;  
-    pos2.Boite_x = rand() % 8 + 1;
+    pos2.Boite_y = rand() % 6 + 2;  
+    pos2.Boite_x = rand() % 6 + 2;
     pos3.obj_y = rand() % 8 + 1;  
     pos3.obj_x = rand() % 8 + 1;
 
